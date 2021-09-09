@@ -13,7 +13,7 @@ namespace PriceQuotation.Controllers
         public IActionResult Index()
         {
             ViewBag.DiscountAmount = 0;
-            ViewBag.Total = 0;
+            ViewBag.TotalPrice = 0;
             return View();
         }
 
@@ -23,12 +23,12 @@ namespace PriceQuotation.Controllers
             if (ModelState.IsValid)
             {
                 ViewBag.DiscountAmount = model.CalculateDiscountAmount();
-                ViewBag.Total = model.CalculateTotal();
+                ViewBag.TotalPrice = model.CalculateTotalPrice();
             }
             else
             {
                 ViewBag.DiscountAmount = 0;
-                ViewBag.Total = 0;
+                ViewBag.TotalPrice = 0;
             }
             return View(model);
         }
