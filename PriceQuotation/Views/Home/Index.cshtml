@@ -1,4 +1,4 @@
-﻿@model PriceQuotation.Views.Home.IndexModel
+﻿@model PriceQuotationModel
 @{
     ViewBag.Title = "Price Quotation";
 }
@@ -16,11 +16,11 @@
     </div>
     <div>
         <label>Discount amount:</label>
-        <input value="@ViewBag.DiscountAmount("C2")" readonly />
+        <input value="@ViewBag.DiscountAmount.ToString("C2")" readonly />
     </div>
     <div>
         <label>Total:</label>
-        <input value="@ViewBag.TotalPrice("C2")" readonly />
+        <input value="@ViewBag.TotalPrice.ToString("C2")" readonly />
     </div>
     <button type="submit">Calculate</button>
     <a asp-action="Index">Clear</a>

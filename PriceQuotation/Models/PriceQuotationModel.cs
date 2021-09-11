@@ -14,19 +14,37 @@ namespace PriceQuotation.Models
         [Required(ErrorMessage = "Please enter a discount percent.")]
         [Range(0, 100, ErrorMessage = "Discount percent must be between 0 and 100")]
         public int? DiscountPercent { get; set; }
-        public decimal? discountAmount;
-        public decimal? CalculateDiscountAmount()
+        // public decimal? DiscountAmount { get; set; }
+        public decimal[]? CalculateDiscountAmountAndTotalPrice()
         {
-            /*decimal?*/ discountAmount = 0;
-            discountAmount = SubTotal / DiscountPercent;
-            return discountAmount;
+            decimal discountAmount = 0;
+            decimal discountPercent = 0;
+            discountPercent = ((decimal)DiscountPercent / 100);
+            discountAmount = (decimal)(SubTotal * discountPercent);
+            // return DiscountAmount;
+        // }
+        
+        // public decimal? CalculateTotalPrice()
+        // {
+            decimal totalPrice = 0;
+            totalPrice = (decimal)(SubTotal - discountAmount);
+            decimal[] totals = new decimal[2] { discountAmount, totalPrice };
+            return totals; // totalPrice, discountAmount;
+        }
+        /*public decimal? CalculateDiscountAmount()
+        {
+            DiscountAmount = 0;
+            decimal? discountPercent = 0;
+            discountPercent = DiscountPercent / 100;
+            DiscountAmount = SubTotal * discountPercent;
+            return DiscountAmount;
         }
         
         public decimal? CalculateTotalPrice()
         {
             decimal? totalPrice = 0;
-            totalPrice = SubTotal - discountAmount;
+            totalPrice = SubTotal - DiscountAmount;
             return totalPrice;
-        }
+        }*/
     }
 }
