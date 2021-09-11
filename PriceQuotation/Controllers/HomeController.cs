@@ -22,8 +22,8 @@ namespace PriceQuotation.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.DiscountAmount = model.CalculateDiscountAmountAndTotalPrice().GetValue(0); //.CalculateDiscountAmount();
-                ViewBag.TotalPrice = model.CalculateDiscountAmountAndTotalPrice().GetValue(1); //.CalculateTotalPrice();
+                ViewBag.DiscountAmount = model.CalculateDiscountAmount();
+                ViewBag.TotalPrice = model.CalculateTotalPrice();
             }
             else
             {
